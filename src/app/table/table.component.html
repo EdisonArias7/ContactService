@@ -1,0 +1,25 @@
+<div class="col-md-7 mx-auto mt-4">
+  <table class="table table-dark table-striped mx-auto">
+    <thead>
+      <tr>
+        <td>Id</td>
+        <td>Name</td>
+        <td>LastName</td>
+        <td>Email</td>
+        <td>Options</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let contact of listContacts">
+        <td>{{contact.id}}</td>  
+        <td>{{contact.name}}</td>
+        <td>{{contact.lastName}}</td>
+        <td>{{contact.email}}</td>
+        <td>
+          <a class="btn btn-secondary m-1" [routerLink]="['/EditContact']">Edit</a>
+          <a class="btn btn-danger">Delete</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
