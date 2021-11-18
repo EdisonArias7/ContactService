@@ -5,7 +5,7 @@ import { EditContactComponent } from './edit-contact/edit-contact.component';
 import { TableComponent } from './table/table.component';
 
 const routes: Routes = [
-  {path:"AddContact",component:ContactComponent},
+  {path:"",component:ContactComponent},
   {path:"EditContact",component:EditContactComponent},
   {path:"ListContact",component:TableComponent}
 ];

@@ -1,21 +1,39 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Contact } from '../interfaces/Contact';
+import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
+import { ContactService } from '../contact/contact.service';
+import { Contact } from '../interfaces/ContactInterface';
 
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.scss']
 })
-export class TableComponent implements OnInit {
+export class TableComponent implements AfterViewInit {
 
-  listContacts: Contact[] = [
-    {name:"Jhon",lastName:"Villalba",email:"@uptc"},
-    {name:"Luis",lastName:"Acero",email:"@gamil"}
-  ];
+  listContacts: Contact[] = [];
+  constructor(private contactService:ContactService) { }
 
-  constructor() { }
-
-  ngOnInit(): void {
+  ngAfterViewInit(): void {
+    this.contactService.getAll()
+    .subscribe((response)=>{
+      console.log(response);
+      this.listContacts = response;
+    },(err)=>{
+      console.log("No se listo los contactos");
+    })
   }
 
+  async delete(id:any){
+    this.contactService.delete(id)
+    .subscribe((response)=>{
+      console.log(response);
+    },(err)=>{
+      console.log("No se elimino contactos");
+    })
+
+    for (let i = 0; i < this.listContacts.length; i++) {
+      if (this.listContacts[i]['id'] === id) {
+        this.listContacts.splice(i, 1);
+      }
+    }
+  }
 }

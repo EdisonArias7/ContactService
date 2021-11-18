@@ -6,6 +6,10 @@ import { AppComponent } from './app.component';
 import { ContactComponent } from './contact/contact.component';
 import { TableComponent } from './table/table.component';
 import { EditContactComponent } from './edit-contact/edit-contact.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { ContactService } from './contact/contact.service';
+
 
 @NgModule({
   declarations: [
@@ -16,9 +20,11 @@ import { EditContactComponent } from './edit-contact/edit-contact.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [ContactService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

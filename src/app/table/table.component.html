@@ -6,18 +6,20 @@
         <td>Name</td>
         <td>LastName</td>
         <td>Email</td>
+        <td>Create At</td>
         <td>Options</td>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let contact of listContacts">
         <td>{{contact.id}}</td>  
-        <td>{{contact.name}}</td>
+        <td>{{contact.firstName}}</td>
         <td>{{contact.lastName}}</td>
         <td>{{contact.email}}</td>
+        <td>{{contact.createdAt}}</td>
         <td>
-          <a class="btn btn-secondary m-1" [routerLink]="['/EditContact']">Edit</a>
-          <a class="btn btn-danger">Delete</a>
+          <a class="btn btn-secondary m-1" [routerLink]="['/editContact']">Edit</a>
+          <a class="btn btn-danger" (click)="delete(contact.id)">Delete</a>
         </td>
       </tr>
     </tbody>
