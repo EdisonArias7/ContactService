@@ -6,20 +6,36 @@
       </h2>
       <form [formGroup]="form_contact" >
         <div class="form-group p-1">
-          <input formControlName="firstName" type="nombre" name="name" placeholder="Ingrese su nombre" class="form-control">
+          <input formControlName="firstName" type="text"  placeholder="Ingrese su nombre" class="form-control">
+          <p class="text-danger" *ngIf="form_contact.controls.firstName.hasError('required')
+          &&form_contact.controls.firstName.touched">
+            El Nombre es obligatorio para registrar el contacto
+          </p>
         </div>
         <div class="form-group p-1">
-          <input formControlName="lastName" type="apellido" name="apellido" placeholder="Ingrese su apellido" class="form-control">
+          <input formControlName="lastName" type="text"  placeholder="Ingrese su apellido" class="form-control">
+          <p class="text-danger" *ngIf="form_contact.controls.lastName.hasError('required')
+          &&form_contact.controls.lastName.touched">
+            El apellido es requerido
+          </p>
         </div>
         <div class="form-group p-1">
-          <input formControlName="email" type="email" name="mail" placeholder="Ingrese su correo" class="form-control">
+          <input  type="email"  formControlName="email" placeholder="Ingrese su correo" class="form-control">
+          <p class="text-danger" *ngIf="form_contact.controls.email.hasError('required')
+          &&form_contact.controls.email.touched">
+            El correo es obligatorio
+          </p>
+          <p class="text-danger" *ngIf="form_contact.controls.email.hasError('pattern')
+          &&form_contact.controls.email.touched">
+            El correo debe tener un formato válido
+          </p>
         </div>
         <div class="d-grid gap-2 p-1 form-group">
           <button (click)="postData()" class="btn btn-success btn-block" type="submit">Registrar</button>
         </div>
-        <!-- <div class="d-grid gap-2 p-1 form-group">
-            <a class="btn btn-secondary btn-block" href="/register">Registrarme</a>
-        </div> -->
+        <div class="d-grid gap-2 p-1 form-group">
+            <a class="btn btn-secondary btn-block" [routerLink]="['/ListContact']">Ver listado de contactos</a>
+        </div>
       </form>
     </div>
   </div>

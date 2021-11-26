@@ -27,7 +27,8 @@ export class TableComponent implements AfterViewInit {
     .subscribe((response)=>{
       console.log(response);
     },(err)=>{
-      console.log("No se elimino contactos");
+      console.log(err);
+      console.log('entró al error')
     })
 
     for (let i = 0; i < this.listContacts.length; i++) {

@@ -17,22 +17,22 @@ export class ContactService {
     return this.http.get<Contact[]>(`${this.url}/list`);
   }
 
-  // crear contacto 
+  // crear contacto
   save(contact:Contact):Observable<Contact>{
     return this.http.post<Contact>(this.url,contact);
   }
 
-  // obtener un contacto por id 
+  // obtener un contacto por id
   getById(id:number):Observable<Contact>{
     return this.http.get<Contact>(this.url+'/'+id);
   }
 
   // eliminar contacto
   delete(id:number):Observable<Contact>{
-    return this.http.delete<Contact>(this.url+'/'+id);
+    return this.http.delete<Contact>(`${this.url}/${id}`);
   }
 
-  // editar contacto 
+  // editar contacto
   edit(id:number,contact:Contact):Observable<Contact>{
     return this.http.patch<Contact>(this.url+'/'+id,contact);
   }
